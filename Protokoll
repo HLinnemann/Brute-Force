@@ -1,0 +1,4 @@
+| explenation | comamndo | response |
+| -------- | -------- | -------- |
+|  Bestimmung des der Passworteigenschaften | NewPassword("int"länge,"int"zulässige Zeichen)      | DONE / ERROR   |
+| passort abgleichen   | checkPassword("String"pwd_vonClient)   | TRUE / FALSE   |
