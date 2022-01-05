@@ -39,16 +39,18 @@ string MyServer::myResponse(string input){
 
 	if (input.compare(0,10,"NewPassword")==0)
 	{
-		int	pwdl = input.at(13)-48;
-		int	pwda = input.at(15)-48;
+		int resultSscanf;
+		int pwdl = 0;
+		int pwda = 0;
+		resultSscanf = sscanf(input.c_str(), "NewPassword(%i,%i)",&pwdl, &pwda);
+		//Funktionsaufruf createPasswort
+		return string ("Done");
 	}
-	else if (input.compare(0,12,"CheckPassword")==0)
-	{
-		int pwdlaenge = input.length - 15;
+	//else if (input.compare(0,12,"CheckPassword")==0)
+	//{
+
 
 		//HülseCode (HenrikHandy)
-
-		//Hash-Umwandlung noch einzufügen
 
 		/*if (pwdo.compare(0,pwdt.length,pwdt)==0)
 		{
@@ -57,7 +59,7 @@ string MyServer::myResponse(string input){
 		{
 			return("Access Denied!");
 		}*/
-			}
+			//}
 }
 
 
