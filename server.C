@@ -44,28 +44,23 @@ string MyServer::myResponse(string input){
 		int pwda = 0;
 		resultSscanf = sscanf(input.c_str(), "NewPassword(%i,%i)",&pwdl, &pwda);
 		//Funktionsaufruf createPasswort
+		//?Umwandlung erhaltenes Passwort in Hash-Wert?
 		return string ("Done");
 	}
-	//else if (input.compare(0,12,"CheckPassword")==0)
-	//{
+	/*else if (input.compare(0,14,"CheckPassword(")==0)
+	{
 
 
-		//HülseCode (HenrikHandy)
+		HülseCode (HenrikHandy)
 
-		/*if (pwdo.compare(0,pwdt.length,pwdt)==0)
-		{
-				return string("Access Granted!");
-		}else
-		{
-			return("Access Denied!");
-		}*/
-			//}
+				 Umwandlung erhaltenes Passwort in Hash-Wert
+
+			}*/
 }
 
 
 
 
-		// Umwandlung erhaltenes Passwort in Hash-Wert
 
 
 

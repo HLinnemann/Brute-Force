@@ -22,12 +22,23 @@ int main() {
 	//connect to host
 	c.conn(host,2035);
 
-	msg = string("Test");
+
+
+
+
+
+
+
+
+
+
+
+	/*msg = string("Test");
 		cout << "client sends:" << msg << endl;
 	c.sendData(msg);
 	msg = c.receive(10);
 	cout << "got response:" << msg << endl;
-	/*int i=0;
+	int i=0;
 	bool goOn=1;
 	while(goOn){ // send and receive data
 		if((rand() % 20) < i++){
@@ -45,4 +56,17 @@ int main() {
 	}*/
 }
 
+void pinKnacken(int l, int z)		// l = länge des Pins ; z = Zahlen bis bsp.: z = 8 bedeutet zahlen 0 bis 8
+{
+	char zahlen[l] = {0,0,0,0};
+
+	string pin = zahlen;//In  String umgewandelten Array
+	cout << pin << endl;
+	/*for(int i = ((z+1)^l);  i <= l; i++)
+	{
+		//Abbruch falls letztes Passwort Korrekt per if
+		for(int k = 0; k )
+
+	}*/
+}
 
