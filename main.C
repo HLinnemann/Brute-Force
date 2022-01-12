@@ -23,7 +23,9 @@ using namespace TASK1;
 
 int main(){
 
-	//demoTASK1_00();
+	BlackboxUnsafe::randomPwd(int l)
+
+	/*demoTASK1_00();
 	int l = 2;
 	int z = 2;
 	int zahlen[l] = {0};
@@ -51,7 +53,7 @@ int main(){
     return 0;
 }
 
-/*void pinKnacken(int l, int z)		// l = länge des Pins ; z = Zahlen bis bsp.: z = 8 bedeutet zahlen 0 bis 8
+void pinKnacken(int l, int z)		// l = länge des Pins ; z = Zahlen bis bsp.: z = 8 bedeutet zahlen 0 bis 8
 {
 	char zahlen[l] = {0,0,0,0};
 
@@ -64,6 +66,7 @@ int main(){
 
 	}
 }*/
-
+return 0;
+}
 
 

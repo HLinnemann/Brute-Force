@@ -31,31 +31,52 @@ protected:
 		};
 int main(){
 	srand(time(nullptr));
-	MyServer srv(2037,25);
+	MyServer srv(2039,25);
 	srv.run();
 }
 
 string MyServer::myResponse(string input){
 
-	if (input.compare(0,10,"NewPassword")==0)
+	if (input.compare(0,11,"NewPassword")==0)
 	{
 		int resultSscanf;
 		int pwdl = 0;
 		int pwda = 0;
 		resultSscanf = sscanf(input.c_str(), "NewPassword(%i,%i)",&pwdl, &pwda);
-		//Funktionsaufruf createPasswort
+		createPasswort(pwdl,pwda);
 		//?Umwandlung erhaltenes Passwort in Hash-Wert?
+		cout<<"Länge:"<<pwdl<<endl;
+		cout<<"Zeichen:"<<pwda<<endl;
 		return string ("Done");
 	}
-	/*else if (input.compare(0,14,"CheckPassword(")==0)
+
+
+	if (input.compare(0,14,"checkPassword(")==0)
 	{
+		const char *tmpPwdChr=input.c_str();
+		char pwdChr[input.size()];
+
+		for (int i = 0;i<input.size();i++)	//Array leeren
+		{
+			pwdChr[i]='\0';
+		}
+
+		for (int j = 14;j<input.size();j++)	//Array umfüllen
+		{
+			if(tmpPwdChr[j]==')')
+				{break;}
+			pwdChr[j-14]=tmpPwdChr[j];
+		}
+		string pwd = string(pwdChr);
+
+		cout<<pwd<<endl;
+		return string("Done");
+	}
 
 
-		HülseCode (HenrikHandy)
+	return string("Error");
 
-				 Umwandlung erhaltenes Passwort in Hash-Wert
 
-			}*/
 }
 
 
@@ -67,8 +88,10 @@ string MyServer::myResponse(string input){
 
 
 
-/*string MyServer::createPassword(int length, int sign)
+string MyServer::createPassword(int length, int sign)
 {
+
+
 	return 0;
 }
-*/
+
