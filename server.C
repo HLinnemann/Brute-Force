@@ -43,7 +43,7 @@ string MyServer::myResponse(string input){
 		int pwdl = 0;
 		int pwda = 0;
 		resultSscanf = sscanf(input.c_str(), "NewPassword(%i,%i)",&pwdl, &pwda);
-		createPasswort(pwdl,pwda);
+		//createPassword(pwdl,pwda);
 		//?Umwandlung erhaltenes Passwort in Hash-Wert?
 		cout<<"Länge:"<<pwdl<<endl;
 		cout<<"Zeichen:"<<pwda<<endl;
@@ -88,10 +88,28 @@ string MyServer::myResponse(string input){
 
 
 
-string MyServer::createPassword(int length, int sign)
+/*string MyServer::createPassword(int l, int s)	//l=länge; s= zulässige Zeichen
 {
+
+	char [] testZeichen= {'A','B','C','D','E','F','G','H','I','J'}
+	string pwd;
+	char [l] Passwort;
+	for (int i = 0;i<=l;i++)
+	{
+		Passwort[i]=testZeichen[rand()%10];
+
+		string pwd = string(Passwort);
+	cout<<pwd<<endl;
+	}
+
+
+
+	//random würfeln
+
 
 
 	return 0;
+
 }
+*/
 

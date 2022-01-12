@@ -117,7 +117,7 @@ public:
  * the check sum for a given string.
  *
  */
-void demoTASK1_00();
+void demoTASK1_00(string input);
 
 /**
  *
