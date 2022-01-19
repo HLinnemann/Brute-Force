@@ -19,19 +19,33 @@
 #include "SIMPLESOCKET.H"
 #include <iostream>
 #include <string>
+#include "SHA256.H"
+#include "TASK1.H"
+
 using namespace std;
+using namespace TASK1;
 
 class MyServer : public TCPserver{
 public:
-		MyServer(int portNmb, int maxDataRecv) : TCPserver(portNmb, maxDataRecv){;};
+		MyServer(int portNmb, int maxDataRecv) : TCPserver(portNmb, maxDataRecv){
+			b = new BlackBoxSafe(3,4);
+		};
+
 
 
 protected:
 		string myResponse(string input);
-		};
+		BlackBoxSafe *b;
+
+
+
+};
+
+
+
 int main(){
 	srand(time(nullptr));
-	MyServer srv(2039,25);
+	MyServer srv(2040,25);
 	srv.run();
 }
 
@@ -40,13 +54,14 @@ string MyServer::myResponse(string input){
 	if (input.compare(0,11,"NewPassword")==0)
 	{
 		int resultSscanf;
-		int pwdl = 0;
-		int pwda = 0;
+		int pwdl = 0;	//Passwortlänge
+		int pwda = 0;	//zulaessige Zeicehn des Passworts
 		resultSscanf = sscanf(input.c_str(), "NewPassword(%i,%i)",&pwdl, &pwda);
-		//createPassword(pwdl,pwda);
-		//?Umwandlung erhaltenes Passwort in Hash-Wert?
-		cout<<"Länge:"<<pwdl<<endl;
-		cout<<"Zeichen:"<<pwda<<endl;
+
+		delete b;
+		b = new BlackBoxSafe(pwdl,pwda);
+
+
 		return string ("Done");
 	}
 
@@ -69,8 +84,7 @@ string MyServer::myResponse(string input){
 		}
 		string pwd = string(pwdChr);
 
-		cout<<pwd<<endl;
-		return string("Done");
+		return (b->input(pwd));
 	}
 
 
@@ -79,37 +93,4 @@ string MyServer::myResponse(string input){
 
 }
 
-
-
-
-
-
-
-
-
-
-/*string MyServer::createPassword(int l, int s)	//l=länge; s= zulässige Zeichen
-{
-
-	char [] testZeichen= {'A','B','C','D','E','F','G','H','I','J'}
-	string pwd;
-	char [l] Passwort;
-	for (int i = 0;i<=l;i++)
-	{
-		Passwort[i]=testZeichen[rand()%10];
-
-		string pwd = string(Passwort);
-	cout<<pwd<<endl;
-	}
-
-
-
-	//random würfeln
-
-
-
-	return 0;
-
-}
-*/
 

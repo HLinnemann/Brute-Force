@@ -21,6 +21,7 @@
 #define TASK1_H_
 
 #include <string>
+#include "SHA256.H"
 
 using namespace std;
 
@@ -104,8 +105,19 @@ protected:
 class BlackBoxSafe : public BlackBoxUnsafe{
 	/// \todo  Implementation of class BlackBoxSafe needs to be finalized.
 public:
-	BlackBoxSafe(int pwdLength, int symbSetSize) : BlackBoxUnsafe(pwdLength, symbSetSize){;};
-	virtual string input(string strPwd){return string("undefined");};
+	BlackBoxSafe(int pwdLength, int symbSetSize) : BlackBoxUnsafe(pwdLength, symbSetSize){
+		pwd_ = sha256(pwd_);
+	};
+	virtual string input(string strPwd){
+
+		string help = sha256(strPwd);
+
+		if(help.compare(pwd_) == 0)
+		{
+				return string("ACCESS ACCEPTED");
+		}
+		return string("ACCESS DENIED");
+	}
 };
 
 
