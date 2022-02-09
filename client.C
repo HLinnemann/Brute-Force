@@ -23,7 +23,7 @@ int main() {
 	string msg2;
 
 	//connect to host
-	c.conn(host,2040);
+	c.conn(host,2038);
 
 	int l = 4;		//manuelle Eingabe benötigt
 	int z = 4;

@@ -45,7 +45,7 @@ protected:
 
 int main(){
 	srand(time(nullptr));
-	MyServer srv(2040,25);
+	MyServer srv(2038,25);
 	srv.run();
 }
 
@@ -54,7 +54,6 @@ string MyServer::myResponse(string input){
 	if (input.compare(0,11,"NewPassword")==0)
 	{
 		int resultSscanf;
-<<<<<<< HEAD
 		int pwdl;	//Passwortlänge
 		int pwda;	//zulaessige Zeichen des Passworts
 		resultSscanf = sscanf(input.c_str(), "NewPassword(%i,%i)",&pwdl, &pwda);
@@ -71,37 +70,12 @@ string MyServer::myResponse(string input){
 	{
 		const char *tmpPwdChr=input.c_str();
 		char pwdChr[input.size()];
-=======
-		int pwdl = 0;	//Passwortlänge
-		int pwda = 0;	//zulaessige Zeicehn des Passworts
-		resultSscanf = sscanf(input.c_str(), "NewPassword(%i,%i)",&pwdl, &pwda);
-
-		delete b;
-		b = new BlackBoxSafe(pwdl,pwda);
-
-
-		return string ("Done");
-	}
->>>>>>> f6ac3eed1cb2d195647713da5beca56feb2c0131
 
 		for (int i = 0;i<input.size();i++)	//Array leeren
 		{
 			pwdChr[i]='\0';
 		}
 
-<<<<<<< HEAD
-=======
-	if (input.compare(0,14,"checkPassword(")==0)
-	{
-		const char *tmpPwdChr=input.c_str();
-		char pwdChr[input.size()];
-
-		for (int i = 0;i<input.size();i++)	//Array leeren
-		{
-			pwdChr[i]='\0';
-		}
-
->>>>>>> f6ac3eed1cb2d195647713da5beca56feb2c0131
 		for (int j = 14;j<input.size();j++)	//Array umfüllen
 		{
 			if(tmpPwdChr[j]==')')
@@ -109,16 +83,9 @@ string MyServer::myResponse(string input){
 			pwdChr[j-14]=tmpPwdChr[j];
 		}
 		string pwd = string(pwdChr);
-<<<<<<< HEAD
-=======
-
-		return (b->input(pwd));
-	}
->>>>>>> f6ac3eed1cb2d195647713da5beca56feb2c0131
 
 		cout<<pwd<<endl;
 
-<<<<<<< HEAD
 		return (b->input(pwd));
 	}
 
@@ -127,11 +94,3 @@ string MyServer::myResponse(string input){
 
 
 }
-=======
-	return string("Error");
-
-
-}
-
-
->>>>>>> f6ac3eed1cb2d195647713da5beca56feb2c0131
