@@ -19,56 +19,78 @@
 #include "SIMPLESOCKET.H"
 #include <iostream>
 #include <string>
+#include "SHA256.H"
+#include "TASK1.H"
+
 using namespace std;
+using namespace TASK1;
 
 class MyServer : public TCPserver{
 public:
-		MyServer(int portNmb, int maxDataRecv) : TCPserver(portNmb, maxDataRecv){;};
+		MyServer(int portNmb, int maxDataRecv) : TCPserver(portNmb, maxDataRecv){
+			b = new BlackBoxSafe(3,4);
+		};
+
 
 
 protected:
 		string myResponse(string input);
-		};
+		BlackBoxSafe *b;
+
+
+
+};
+
+
+
 int main(){
 	srand(time(nullptr));
-	MyServer srv(2037,25);
+	MyServer srv(2040,25);
 	srv.run();
 }
 
 string MyServer::myResponse(string input){
 
-	if (input.compare(0,10,"NewPassword")==0)
+	if (input.compare(0,11,"NewPassword")==0)
 	{
 		int resultSscanf;
-		int pwdl = 0;
-		int pwda = 0;
+		int pwdl;	//Passwortlänge
+		int pwda;	//zulaessige Zeichen des Passworts
 		resultSscanf = sscanf(input.c_str(), "NewPassword(%i,%i)",&pwdl, &pwda);
-		//Funktionsaufruf createPasswort
-		//?Umwandlung erhaltenes Passwort in Hash-Wert?
+
+		delete b;
+		b = new BlackBoxSafe(pwdl,pwda);
+
+
 		return string ("Done");
 	}
-	/*else if (input.compare(0,14,"CheckPassword(")==0)
+
+
+	if (input.compare(0,14,"checkPassword(")==0)
 	{
+		const char *tmpPwdChr=input.c_str();
+		char pwdChr[input.size()];
+
+		for (int i = 0;i<input.size();i++)	//Array leeren
+		{
+			pwdChr[i]='\0';
+		}
+
+		for (int j = 14;j<input.size();j++)	//Array umfüllen
+		{
+			if(tmpPwdChr[j]==')')
+				{break;}
+			pwdChr[j-14]=tmpPwdChr[j];
+		}
+		string pwd = string(pwdChr);
+
+		cout<<pwd<<endl;
+
+		return (b->input(pwd));
+	}
 
 
-		HülseCode (HenrikHandy)
+	return string("Error");
 
-				 Umwandlung erhaltenes Passwort in Hash-Wert
 
-			}*/
 }
-
-
-
-
-
-
-
-
-
-
-/*string MyServer::createPassword(int length, int sign)
-{
-	return 0;
-}
-*/
