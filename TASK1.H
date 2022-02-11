@@ -108,7 +108,7 @@ public:
 	BlackBoxSafe(int pwdLength, int symbSetSize) : BlackBoxUnsafe(pwdLength, symbSetSize){
 		pwd_ = sha256(pwd_);
 	};
-	virtual string input(string strPwd){
+	string input(string strPwd){
 
 		string help = sha256(strPwd);
 
